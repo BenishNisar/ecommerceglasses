@@ -37,21 +37,19 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Sidebar toggle
-function toggleSidebar() {
-  document.getElementById("sidebar").classList.toggle("active");
-}
+// function toggleSidebar() {
+//   document.getElementById("sidebar").classList.toggle("active");
+// }
 
 
-function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("active");
-    }
+// function toggleSidebar() {
+//       document.getElementById("sidebar").classList.toggle("active");
+//     }
 
 
-// sidebar
-function toggleSidebar() {
-  document.getElementById("sidebar").classList.toggle("active");
-}
+// function toggleSidebar() {
+//   document.getElementById("sidebar").classList.toggle("active");
+// }
 
 
 // caruselarrowe
@@ -208,23 +206,18 @@ document.querySelector(".discover-btn-new").addEventListener("click", function()
 
 // carts
 
+// animated sidebar
 
-// nested sidebar
-function toggleDropdown() {
-    var dropdown = document.querySelector('.dropdown-item');
-    dropdown.classList.toggle('active');
+function closeSidebar() {
+  const sidebar = document.querySelector('.sidebar-wrapper');
+  sidebar.classList.remove('active');
+
+  // Reset animation for next time
+  document.querySelectorAll('.sidebar ul li').forEach(li => {
+    li.style.animation = 'none';
+    li.offsetHeight; // Trigger reflow
+    li.style.animation = '';
+  });
 }
 
-function openCategorySidebar(categoryId) {
-    // Hide all sidebars
-    var sidebars = document.querySelectorAll('.nested-sidebar');
-    sidebars.forEach(function (sidebar) {
-        sidebar.style.display = 'none';
-    });
 
-    // Show the selected sidebar
-    var selectedSidebar = document.getElementById(categoryId);
-    if (selectedSidebar) {
-        selectedSidebar.style.display = 'block';
-    }
-}

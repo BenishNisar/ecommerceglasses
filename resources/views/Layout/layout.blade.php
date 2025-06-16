@@ -66,9 +66,26 @@
 
  <!-- Sidebar for Cart -->
     <div class="cart-sidebar" id="cartSidebar">
+
+
       <span class="cart-sidebar-close" onclick="toggleCartSidebar()">&times;</span>
       {{-- <h3>Your Cart</h3> --}}
-      <div id="cartItems"></div> <!-- Cart items will be dynamically loaded here -->
+      {{-- <div id="cartItems"></div>  --}}
+      <div class="cart-item">
+  <img src="https://alburhanluggage.com/cdn/shop/files/modo-by-rontato-black-large-01.png?v=1713525465&width=500" alt="Modo by Roncato">
+  <div class="cart-item-details">
+    <h5>Modo by Roncato</h5>
+    <p>BLACK / SMALL</p>
+    <p>Rs.15,999.00</p>
+    <div class="qty-controls">
+      <button>-</button>
+      <span>1</span>
+      <button>+</button>
+    </div>
+    <span class="remove-btn" onclick="removeFromCart(this)">Remove</span>
+  </div>
+</div>
+
       <div>
         <button class="btn btn-primary w-100" style="position: relative;top:50px;">Checkout</button>
       </div>
@@ -78,26 +95,67 @@
     </div>
 
     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-      <span class="sidebar-close" onclick="toggleSidebar()">&times;</span>
-      <ul>
-        <li>Screen Glasses</li>
-        <li>
-Intelligent Glasses
-</li>
-        <li>Eyeglasses <i class="fas fa-chevron-right"></i></li>
-        <li>
-Female Glasses
- <i class="fas fa-chevron-right"></i></li>
-        <li>
-Sunglasses <i class="fas fa-chevron-right"></i></li>
-        <li>
-Contact Lenses
-</li>
-        <li>About Us</li>
-      </ul>
-    </div>
+<!-- TOGGLE BUTTON IN NAVBAR -->
+<div class="menu-icon" onclick="toggleSidebar()">
+  <i class="fas fa-bars"></i>
+</div>
 
+<!-- ✅ SIDEBAR WRAPPER -->
+<div class="sidebar-wrapper" id="sidebarWrapper">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar left-sidebar" id="sidebar">
+    <span class="sidebar-close" onclick="closeSidebar()">&times;</span>
+    <ul>
+      <li>Screen Glasses
+</li>
+<li>Intelligent Glasses</li>
+<li onclick="toggleSubSidebar('eyeglasses-subsidebar')">EYEGLASSES <i class="fas fa-chevron-right"></i></li>
+<li>Female Glasses</li>
+      <li onclick="toggleSubSidebar('sunglasses-subsidebar')">SUNGLASSES <i class="fas fa-chevron-right"></i></li>
+      <li onclick="toggleSubSidebar('contact-lenses-subsidebar')">CONTACT LENSES <i class="fas fa-chevron-right"></i></li>
+<li>About Us</li>
+<li>Contact Us</li>
+<li>Track Order</li>
+<li>Refund Policy
+
+</li>
+<li>
+Accessories
+</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT SIDEBAR: EYEGLASSES -->
+  <div class="sidebar right-sidebar" id="eyeglasses-subsidebar">
+    <ul>
+      <li>Transition Glasses</li>
+      <li>luxury glasses</li>
+      <li>Clipper Glasses</li>
+      <li>Sale Glasses</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT SIDEBAR: SUNGLASSES -->
+  <div class="sidebar right-sidebar" id="sunglasses-subsidebar">
+    <span class="sidebar-close" onclick="closeSidebar()">&times;</span>
+    <ul>
+      <li>Male Sunglasses</li>
+      <li>Female Glasses</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT SIDEBAR: CONTACT LENSES -->
+  <div class="sidebar right-sidebar" id="contact-lenses-subsidebar">
+    <span class="sidebar-close" onclick="closeSidebar()">&times;</span>
+    <ul>
+      <li>Dahab Contact lenses</li>
+      <li>One Day Wear</li>
+      <li>Monthly Wear</li>
+    </ul>
+  </div>
+
+</div>
 
     <!-- Banner Slides -->
     <!-- <div class="hero-carousel">
@@ -297,6 +355,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       addToCart(sampleProduct);
     });
 </script>
+
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebarWrapper').classList.add('active');
+  }
+
+  function closeSidebar() {
+    document.getElementById('sidebarWrapper').classList.remove('active');
+    document.querySelectorAll('.right-sidebar').forEach(sidebar => {
+      sidebar.classList.remove('active');
+    });
+  }
+
+  function toggleSubSidebar(id) {
+    document.querySelectorAll('.right-sidebar').forEach(sidebar => {
+      sidebar.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
